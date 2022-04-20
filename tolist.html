@@ -1,0 +1,83 @@
+<html >
+<head>
+    
+    <title>todoLst.com</title>
+</head>
+<style>
+    body {
+        font-family: sans-serif;
+        background-color: #333;
+        text-align: center;
+    }
+    
+    .todolist {
+        border: solid white 2px;
+        margin: 50px;
+        border-radius: 10px;
+    }
+    
+    .createList {
+        padding: 20px;
+    }
+    
+    h1 {
+        color: aquamarine;
+    }
+    
+    button {
+        cursor: pointer;
+    }
+    
+    input,button {
+        padding: 10px 30px;
+        border-radius: 5px;
+        border: none;
+        margin: 5px;
+        font-size: 15px;
+    }
+    
+    #addList {
+        background-color: darkturquoise;
+    }
+    
+    .options {
+        padding: 20px;
+    }
+    #showList{
+        padding: 10px;
+        color: coral;
+    }
+    .tasks{
+        padding: 5px;
+    }
+    span{
+        padding: 10px 20px;
+        color: white;
+    }
+    .completed{
+        background-color: coral;
+        color: #333;
+        padding: 5px;
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+    <div class="todolist">
+        <h1>To Do List</h1>
+        <hr>
+        <span style="float: right;"><button onclick="logout()">Logout</button></span><br><br><br>
+        <input type="text" id="newList" placeholder="Type your tasks here....">
+        <button onclick="addList()">Add Task</button><br><br>
+        <hr>
+        <div id="showList">
+        </div>
+        <div class="options">
+            <button onclick="clearComplete()">Clear Complete</button>
+            <button onclick="empty()">Clear List</button>
+        </div>
+    </div>
+    <script src="todolist.js"></script>
+</body>
+
+</html>
