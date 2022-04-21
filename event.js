@@ -31,7 +31,7 @@ function storeCredentials() {
             console.log(JSON.parse(localStorage.getItem("user")));
         }
     } else {
-        alert('Invaid username or passwords');
+        alert('Passwords mismatched');
     }
 }
 var findUser = '';

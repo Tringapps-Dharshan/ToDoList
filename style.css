@@ -6,7 +6,11 @@ body {
 h1 {
     color: cyan;
 }
-
+.center{
+    display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
 input {
     display: list-item;
     padding: 10px 30px;

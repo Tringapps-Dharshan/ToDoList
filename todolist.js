@@ -7,7 +7,7 @@ function addList() {
         var getUserDetails = JSON.parse(details);
         let add = {
             "taskname": task,
-            "checked": "no"
+            "checked": "false"
         }
         getUserDetails.todolist.push(add);
         for (let list of user.users) {
@@ -36,7 +36,12 @@ function display() {
         var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
         if (getDetails.todolist.length > 0) {
             for (i in getDetails.todolist) {
-                x += "<p onclick = 'strike(this);' > " + getDetails.todolist[i].taskname + " </p>"
+               if(getDetails.todolist[i].checked=='true'){
+                x += `<p class="completed" onclick = "strike(this,${i})" >${getDetails.todolist[i].taskname}</p>`
+               }
+               else{
+                x += `<p onclick = "strike(this,${i})" >${getDetails.todolist[i].taskname}</p>`
+               }
             }
         } else {
             x = "Enter task to add";
@@ -46,19 +51,43 @@ function display() {
 }
 window.onload = display();
 
-function strike(x) {
-    x.classList.toggle('completed');
+function strike(x,i) {
+    var currentUser = JSON.parse(sessionStorage["user"]);
+    var user = JSON.parse(localStorage.getItem("user"));
+    var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
+    if(getDetails.todolist[i].checked=='false'){
+        getDetails.todolist[i].checked='true';
+        x.classList.toggle('completed');
+        localStorage.setItem("user",JSON.stringify(user));
+    }else{
+        getDetails.todolist[i].checked='false';
+        x.classList.remove('completed');
+        localStorage.setItem("user",JSON.stringify(user));
+    }
+}
 
+function clearComplete(){
+    var currentUser = JSON.parse(sessionStorage["user"]);
+    var user = JSON.parse(localStorage.getItem("user"));
+    var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
+    var filtertask = getDetails.todolist.filter(check=>check.checked=="false");
+    getDetails.todolist=filtertask;
+    localStorage.setItem("user",JSON.stringify(user));
+    display();
 }
 
 function empty() {
     var currentUser = JSON.parse(sessionStorage["user"]);
     var user = JSON.parse(localStorage.getItem("user"));
     var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
-    for (i in getDetails.todolist) {
-        console.log(getDetails.todolist.pop());
+    if(getDetails.todolist.length>0){
+        for (i in getDetails.todolist) {
+            getDetails.todolist.pop();
+        }
+        getDetails.todolist.pop();
+    }else{
+        alert("No tasks to delete.");
     }
-    getDetails.todolist.pop();
     localStorage.setItem("user", JSON.stringify(user));
     display();
 }
