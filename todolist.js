@@ -80,7 +80,7 @@ function empty() {
     var user = JSON.parse(localStorage.getItem("user"));
     var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
     if(getDetails.todolist.length>0){
-        for (i in getDetails.todolist) {
+        for (let i in getDetails.todolist) {
             getDetails.todolist.pop();
         }
         getDetails.todolist.pop();
