@@ -35,7 +35,7 @@ function display() {
         var user = JSON.parse(localStorage.getItem("user"));
         var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
         if (getDetails.todolist.length > 0) {
-            for (i in getDetails.todolist) {
+            for (let i in getDetails.todolist) {
                if(getDetails.todolist[i].checked=='true'){
                 x += `<p class="completed" onclick = "strike(this,${i})" >${getDetails.todolist[i].taskname}</p>`
                }
