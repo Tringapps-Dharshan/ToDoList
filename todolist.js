@@ -49,7 +49,7 @@ function display() {
     }
     document.getElementById('showList').innerHTML = x;
 }
-window.onload = display();
+window.onload = return display();
 
 function strike(x,i) {
     var currentUser = JSON.parse(sessionStorage["user"]);
