@@ -40,7 +40,7 @@ var findUser = '';
 function checkCredentials() {
     let name = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
-    var user = JSON.parse(localStorage.getItem("user"));
+    user = JSON.parse(localStorage.getItem("user"));
     findUser = user.users.find(element => element.username == name && element.password == password);
     if (findUser) {
         document.signin.action = "tolist.html";
