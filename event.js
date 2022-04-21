@@ -1,6 +1,5 @@
 var user;
 function storeCredentials() {
-    var user;
     let name = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
     let confirmPassword = document.getElementById("confirmpassword").value.trim();
