@@ -76,11 +76,12 @@ function clearComplete(){
 }
 
 function empty() {
+    let i;
     var currentUser = JSON.parse(sessionStorage["user"]);
     var user = JSON.parse(localStorage.getItem("user"));
     var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
     if(getDetails.todolist.length>0){
-        for (let i in getDetails.todolist) {
+        for (i in getDetails.todolist) {
             getDetails.todolist.pop();
         }
         getDetails.todolist.pop();
