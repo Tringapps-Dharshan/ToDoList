@@ -1,10 +1,11 @@
 function storeCredentials() {
+    var user;
     let name = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
     let confirmPassword = document.getElementById("confirmpassword").value.trim();
     if (name.length > 0 && password.length > 0 && password == confirmPassword) {
         if (localStorage['user'] == undefined) {
-            var user = {
+            user = {
                 users: []
             }
             user.users.push({
@@ -15,7 +16,7 @@ function storeCredentials() {
             localStorage.setItem("user", JSON.stringify(user));
             document.signup.action = "signin.html";
         } else {
-            var user = JSON.parse(localStorage.getItem("user"));
+            user = JSON.parse(localStorage.getItem("user"));
             if (user.users.find(element => element.username == name && element.password == password)) {
                 alert("User already exists.");
                 document.signup.action = "signin.html";
