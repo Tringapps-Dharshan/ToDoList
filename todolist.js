@@ -82,6 +82,7 @@ function empty() {
     var getDetails = user.users.find(element => element.username == currentUser.username && element.password == currentUser.password);
     if(getDetails.todolist.length>0){
         for (i in getDetails.todolist) {
+            console.log(i);
             getDetails.todolist.pop();
         }
         getDetails.todolist.pop();
